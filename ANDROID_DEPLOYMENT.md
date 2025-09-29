@@ -15,21 +15,26 @@ Your RIFA APPLIANCES billing system is now configured to work with your Android 
 
 ## 📋 **Step-by-Step Deployment**
 
-### **1. Navigate to Project Directory**
+### **1. Clone/Update Repository on Windows**
 
-Since you already cloned the repository, navigate to the Flutter project:
+⚠️ **Important**: Run these commands on your **Windows machine**, not in the codespace!
 
-**If you cloned into a new directory:**
+**If you haven't cloned yet:**
 ```bash
+git clone https://github.com/syedthufel/Billing-System.git
 cd Billing-System/frontend/appliances_billing
 ```
 
-**Or use the original project:**
+**If you already have it cloned:**
 ```bash
+cd Billing-System
+git pull origin main
 cd frontend/appliances_billing
 ```
 
-### **2. Install Flutter Dependencies**
+### **2. Install Flutter Dependencies (On Windows)**
+
+⚠️ **Run on Windows Command Prompt/PowerShell:**
 
 ```bash
 flutter clean
@@ -47,15 +52,19 @@ dart run build_runner build --delete-conflicting-outputs
    
 3. **Connect via USB** and allow debugging when prompted
 
-### **4. Verify Device Connection**
+### **4. Verify Device Connection (On Windows)**
+
+⚠️ **Run on Windows where Android device is connected:**
 
 ```bash
 flutter devices
 ```
 
-You should see your Android device listed.
+You should see your Android device listed (not just Linux desktop).
 
-### **5. Deploy to Device**
+### **5. Deploy to Device (On Windows)**
+
+⚠️ **Run on Windows with Android device connected:**
 
 ```bash
 flutter run
@@ -66,6 +75,17 @@ flutter run
 flutter build apk --release
 ```
 Then install: `build/app/outputs/flutter-apk/app-release.apk`
+
+---
+
+## ⚠️ **Important Notes**
+
+- **Codespace Environment**: The GitHub Codespace (Linux) cannot directly connect to your Android device
+- **Windows Required**: You must run Flutter commands on your Windows machine where:
+  - Android Studio is installed
+  - Android SDK is configured  
+  - Your Android device is connected via USB
+- **Backend Connection**: The Flutter app will connect to the codespace backend automatically
 
 ---
 
