@@ -1,0 +1,35 @@
+{
+  "name": "billing-system",
+  "version": "1.0.0",
+  "description": "Complete billing system for appliances shop with Flutter frontend and Node.js backend",
+  "scripts": {
+    "install-backend": "cd backend && npm install",
+    "install-flutter": "cd flutter_app && flutter pub get",
+    "install-all": "npm run install-backend && npm run install-flutter",
+    "start-backend": "cd backend && npm start",
+    "dev-backend": "cd backend && npm run dev",
+    "seed-data": "cd backend && node seedData.js",
+    "start-flutter": "cd flutter_app && flutter run",
+    "test-backend": "cd backend && npm test",
+    "setup": "npm run install-all && npm run seed-data"
+  },
+  "keywords": [
+    "billing",
+    "flutter",
+    "nodejs",
+    "mongodb",
+    "gst",
+    "invoice",
+    "stock-management",
+    "appliances",
+    "pos-system"
+  ],
+  "author": "Billing System Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

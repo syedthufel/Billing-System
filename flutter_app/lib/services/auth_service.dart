@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:flutter/foundation.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -193,9 +195,16 @@ class AuthService extends ChangeNotifier {
       }
 
       // Enable biometric in backend
-      final response = await ApiService._request('PUT', '/auth/biometric', body: {
-        'enabled': true,
-      });
+      final response = await http.put(
+        Uri.parse('${ApiService.baseUrl}/auth/biometric'),
+        headers: ApiService._headers,
+        body: jsonEncode({'enabled': true}),
+      );
+
+      final responseBody = jsonDecode(response.body);
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        throw ApiException(responseBody['error'] ?? 'Unknown error', response.statusCode);
+      }
 
       // Store user ID for future biometric logins
       final prefs = await SharedPreferences.getInstance();
@@ -221,9 +230,16 @@ class AuthService extends ChangeNotifier {
 
     try {
       // Disable biometric in backend
-      final response = await ApiService._request('PUT', '/auth/biometric', body: {
-        'enabled': false,
-      });
+      final response = await http.put(
+        Uri.parse('${ApiService.baseUrl}/auth/biometric'),
+        headers: ApiService._headers,
+        body: jsonEncode({'enabled': false}),
+      );
+
+      final responseBody = jsonDecode(response.body);
+      if (response.statusCode < 200 || response.statusCode >= 300) {
+        throw ApiException(responseBody['error'] ?? 'Unknown error', response.statusCode);
+      }
 
       // Remove stored user ID
       final prefs = await SharedPreferences.getInstance();
