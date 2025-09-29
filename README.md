@@ -100,4 +100,4 @@ billing-app/
 
 ## 👨‍💻 Author
 
-Developed by Thanziya Rifa ✨
+Developed by Syed Thufel ✨
